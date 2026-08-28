@@ -7,10 +7,17 @@
   <meta name="description" content="Contact Farmer Community - Get help, report issues, share suggestions, and connect with our team.">
   <title>Contact Us | Farmer Community</title>
 
+  <!-- Google AdSense account verification -->
+  <meta name="google-adsense-account" content="ca-pub-2606126305565597">
+  <script async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2606126305565597"
+          crossorigin="anonymous"></script>
+
   <style>
     :root {
       --green: #388E3C;
       --green-dark: #2E7D32;
+      --green-darker: #1B5E20;
       --green-light: #E8F5E9;
       --green-soft: #F4FBF4;
       --text: #202124;
@@ -21,13 +28,8 @@
       --radius: 18px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -37,13 +39,11 @@
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
+    /* ===== App bar ===== */
     .app-bar {
-      background: var(--green);
+      background: linear-gradient(100deg, var(--green-darker), var(--green));
       color: white;
       min-height: 76px;
       display: flex;
@@ -59,7 +59,7 @@
       margin: auto;
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
     .back-button {
@@ -68,8 +68,9 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      font-size: 30px;
+      font-size: 28px;
       transition: background 0.2s ease, transform 0.2s ease;
+      flex: none;
     }
 
     .back-button:hover {
@@ -77,29 +78,53 @@
       transform: translateX(-2px);
     }
 
-    .app-title {
-      margin: 0;
-      font-size: 25px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
+    .app-icon {
+      flex: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 11px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.3);
+      overflow: hidden;
     }
 
+    .app-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .app-title { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.3px; white-space: nowrap; }
+
+    /* Site nav — links to the other pages, pushed right */
+    .site-nav {
+      margin-left: auto;
+      display: flex;
+      gap: 4px;
+    }
+
+    .site-nav a {
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.88);
+      transition: background .15s ease, color .15s ease;
+      white-space: nowrap;
+    }
+
+    .site-nav a:hover { background: rgba(255,255,255,.14); color: white; }
+    .site-nav a.current { background: rgba(255,255,255,.92); color: var(--green-darker); font-weight: 700; }
+
+    @media (max-width: 820px) {
+      .site-nav { display: none; }
+    }
+
+    /* ===== Hero ===== */
     .hero {
       background: linear-gradient(180deg, var(--green-light) 0%, #ffffff 100%);
       padding: 58px 18px 48px;
       border-bottom: 1px solid #e7eee8;
     }
 
-    .hero-inner {
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-
-    .sprout {
-      font-size: 48px;
-      margin-bottom: 8px;
-    }
+    .hero-inner { max-width: 900px; margin: auto; text-align: center; }
+    .sprout { font-size: 48px; margin-bottom: 8px; }
 
     .hero h1 {
       margin: 0;
@@ -124,10 +149,7 @@
       font-size: 16px;
     }
 
-    .container {
-      width: min(1120px, calc(100% - 36px));
-      margin: auto;
-    }
+    .container { width: min(1120px, calc(100% - 36px)); margin: auto; }
 
     .contact-grid {
       display: grid;
@@ -162,43 +184,36 @@
       margin-bottom: 16px;
     }
 
-    .contact-card h2 {
-      font-size: 20px;
-      margin: 0 0 5px;
-    }
+    .contact-card h2 { font-size: 20px; margin: 0 0 5px; }
+    .contact-card p { color: var(--muted); margin: 0 0 15px; font-size: 14px; }
+    .contact-link { color: var(--green-dark); font-weight: 700; word-break: break-word; }
 
-    .contact-card p {
-      color: var(--muted);
-      margin: 0 0 15px;
-      font-size: 14px;
-    }
-
-    .contact-link {
-      color: var(--green-dark);
-      font-weight: 700;
-      word-break: break-word;
-    }
-
-    .section {
-      padding: 8px 0 50px;
-    }
-
-    .section-heading {
+    /* ===== Ad slot ===== */
+    .ad-slot {
+      background: var(--green-soft);
+      border: 1px dashed #cfe3cf;
+      border-radius: 16px;
+      padding: 14px;
       text-align: center;
-      margin-bottom: 25px;
+      overflow: hidden;
+      min-height: 90px;
+      margin: 6px 0 40px;
     }
 
-    .section-heading h2 {
-      margin: 0;
-      font-size: 30px;
-      letter-spacing: -0.5px;
-    }
-
-    .section-heading p {
-      margin: 7px auto 0;
+    .ad-slot .label {
+      display: block;
+      font-size: 10.5px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       color: var(--muted);
-      max-width: 650px;
+      margin-bottom: 8px;
     }
+
+    .section { padding: 8px 0 50px; }
+
+    .section-heading { text-align: center; margin-bottom: 25px; }
+    .section-heading h2 { margin: 0; font-size: 30px; letter-spacing: -0.5px; }
+    .section-heading p { margin: 7px auto 0; color: var(--muted); max-width: 650px; }
 
     .form-card {
       max-width: 820px;
@@ -210,26 +225,11 @@
       box-shadow: var(--shadow);
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 17px;
-    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+    .field { margin-bottom: 18px; }
+    label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 7px; }
 
-    .field {
-      margin-bottom: 18px;
-    }
-
-    label {
-      display: block;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 7px;
-    }
-
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       border: 1px solid #cfd8d1;
       border-radius: 12px;
@@ -241,17 +241,12 @@
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    input:focus,
-    select:focus,
-    textarea:focus {
+    input:focus, select:focus, textarea:focus {
       border-color: var(--green);
       box-shadow: 0 0 0 4px rgba(56, 142, 60, 0.12);
     }
 
-    textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
+    textarea { min-height: 150px; resize: vertical; }
 
     .button {
       width: 100%;
@@ -267,32 +262,12 @@
       transition: background 0.2s ease, transform 0.2s ease;
     }
 
-    .button:hover {
-      background: var(--green-dark);
-      transform: translateY(-1px);
-    }
+    .button:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .button:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
-    .button:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .form-status {
-      text-align: center;
-      font-size: 14px;
-      font-weight: 600;
-      margin: 14px 0 0;
-      min-height: 20px;
-    }
-
-    .form-status.success {
-      color: var(--green-dark);
-    }
-
-    .form-status.error {
-      color: #c0392b;
-    }
+    .form-status { text-align: center; font-size: 14px; font-weight: 600; margin: 14px 0 0; min-height: 20px; }
+    .form-status.success { color: var(--green-dark); }
+    .form-status.error { color: #c0392b; }
 
     .faq-note {
       background: var(--green-soft);
@@ -304,71 +279,74 @@
       max-width: 820px;
     }
 
-    .faq-note strong {
-      color: var(--green-dark);
-    }
+    .faq-note strong { color: var(--green-dark); }
 
-    footer {
-      background: #263129;
-      color: #dfe7e1;
-      padding: 32px 18px;
-      text-align: center;
+    /* ===== Footer ===== */
+    footer { background: #1c2a1f; color: #dfe7e1; padding: 40px 18px 30px; }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 26px;
     }
 
     footer .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: white;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    footer p {
-      margin: 5px 0;
-      font-size: 14px;
+    footer .brand-mark {
+      width: 30px; height: 30px; border-radius: 9px;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22);
+      overflow: hidden; flex: none;
+    }
+    footer .brand-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    footer p { margin: 5px 0; font-size: 14px; max-width: 320px; color: rgba(223,231,225,.8); }
+
+    .footer-links-group h3 {
+      margin: 0 0 12px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: rgba(223,231,225,.55);
     }
 
-    footer a {
-      color: #b9dfbc;
-      font-weight: 600;
+    .footer-links-group { display: flex; flex-direction: column; gap: 8px; }
+    .footer-links-group a { color: #b9dfbc; font-weight: 600; font-size: 14px; }
+    .footer-links-group a:hover { text-decoration: underline; }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 28px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      font-size: 12.5px;
+      color: rgba(223,231,225,.5);
+      text-align: center;
     }
 
     @media (max-width: 780px) {
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .app-bar {
-        min-height: 66px;
-      }
-
-      .app-title {
-        font-size: 21px;
-      }
-
-      .hero {
-        padding-top: 44px;
-      }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .app-bar { min-height: 66px; }
+      .app-title { font-size: 19px; }
+      .hero { padding-top: 44px; }
     }
 
     @media (max-width: 430px) {
-      .app-bar-inner,
-      .container {
-        width: min(100% - 24px, 1120px);
-      }
-
-      .hero {
-        padding-left: 12px;
-        padding-right: 12px;
-      }
-
-      .contact-card {
-        padding: 21px 18px;
-      }
+      .app-bar-inner, .container { width: min(100% - 24px, 1120px); }
+      .hero { padding-left: 12px; padding-right: 12px; }
+      .contact-card { padding: 21px 18px; }
     }
   </style>
 </head>
@@ -378,11 +356,17 @@
   <!-- Farmer Community App Bar -->
   <header class="app-bar">
     <div class="app-bar-inner">
-      <a class="back-button"
-         href="javascript:history.back()"
-         aria-label="Go back"
-         title="Go back">‹</a>
+      <a class="back-button" href="javascript:history.back()" aria-label="Go back" title="Go back">‹</a>
+      <span class="app-icon"><img src="favicon-256.png" alt="AgriBase logo"></span>
       <h1 class="app-title">Contact Farmer Community</h1>
+
+      <nav class="site-nav" aria-label="Farmer Community site">
+        <a href="https://chinatsvi.github.io/farmers-community/">Home</a>
+        <a href="https://chinatsvi.github.io/farmer-community-Help-FAQ/">Help</a>
+        <a href="https://chinatsvi.github.io/farmer-community-privacy-policy/">Privacy</a>
+        <a href="https://chinatsvi.github.io/farmer-community-terms/">Terms</a>
+        <a class="current" href="https://chinatsvi.github.io/farmer-community-contact-us/">Contact</a>
+      </nav>
     </div>
   </header>
 
@@ -427,13 +411,23 @@
 
     </section>
 
+    <!-- ============ AD SLOT — between contact methods and form ============ -->
+    <div class="ad-slot">
+      <span class="label">Advertisement</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2606126305565597"
+           data-ad-slot="7638324548"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
     <!-- Contact Form -->
     <section class="section" id="contact-form">
       <div class="section-heading">
         <h2>Send Us a Message</h2>
-        <p>
-          Fill in the form below and our team will get back to you as soon as possible.
-        </p>
+        <p>Fill in the form below and our team will get back to you as soon as possible.</p>
       </div>
 
       <div class="form-card">
@@ -466,8 +460,7 @@
 
           <div class="field">
             <label for="message">Your Message</label>
-            <textarea id="message" name="message"
-              placeholder="Tell us how we can help..." required></textarea>
+            <textarea id="message" name="message" placeholder="Tell us how we can help..." required></textarea>
           </div>
 
           <button class="button" type="submit" id="submitBtn">Send Message</button>
@@ -481,20 +474,45 @@
       <strong>Found a bug?</strong><br>
       Please tell us what happened, what you were doing when the problem occurred,
       and which part of Farmer Community was affected. This helps us investigate and improve the app.
+      Looking for a quick answer instead? Check the
+      <a href="https://chinatsvi.github.io/farmer-community-Help-FAQ/" style="color:var(--green-dark); text-decoration:underline;">Help &amp; FAQ</a> page.
     </div>
 
   </main>
 
   <footer>
-    <div class="brand">🌱 Farmer Community</div>
-    <p>Empowering farmers with knowledge, connections and practical tools.</p>
-    <p>
-      <a href="mailto:chinatsvieno@gmail.com">chinatsvieno@gmail.com</a>
-      &nbsp;•&nbsp;
-      <a href="https://www.facebook.com/agrochinatsvi" target="_blank" rel="noopener noreferrer">Facebook</a>
-      &nbsp;•&nbsp;
-      <a href="https://wa.me/2774902204" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-    </p>
+    <div class="footer-inner">
+
+      <div>
+        <div class="brand">
+          <span class="brand-mark"><img src="favicon-256.png" alt="AgriBase logo"></span>
+          Farmer Community
+        </div>
+        <p>Empowering farmers with knowledge, connections and practical tools.</p>
+      </div>
+
+      <div class="footer-links-group">
+        <h3>Site</h3>
+        <a href="https://chinatsvi.github.io/farmers-community/">Home</a>
+        <a href="https://chinatsvi.github.io/farmer-community-Help-FAQ/">Help &amp; FAQ</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h3>Legal</h3>
+        <a href="https://chinatsvi.github.io/farmer-community-privacy-policy/">Privacy Policy</a>
+        <a href="https://chinatsvi.github.io/farmer-community-terms/">Terms &amp; Conditions</a>
+      </div>
+
+      <div class="footer-links-group">
+        <h3>Reach us</h3>
+        <a href="mailto:chinatsvieno@gmail.com">Email</a>
+        <a href="https://wa.me/2774902204" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="https://www.facebook.com/agrochinatsvi" target="_blank" rel="noopener noreferrer">Facebook</a>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">© 2026 Farmer Community. All rights reserved.</div>
   </footer>
 
   <script>
